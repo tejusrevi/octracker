@@ -2,6 +2,7 @@ import * as functions from "firebase-functions";
 import * as https from "https";
 
 export const GetNextTripsForStopAllRoutes = functions.https.onRequest((request, response) => {
+  response.set('Access-Control-Allow-Origin', '*');
   if (request.query.stopNo == null){
     response.status(400).send({"message":"Missing stop number"})
   }
@@ -20,6 +21,7 @@ export const GetNextTripsForStopAllRoutes = functions.https.onRequest((request, 
  });
 
  export const GetNextTripsForStop = functions.https.onRequest((request, response) => {
+  response.set('Access-Control-Allow-Origin', '*');
   if (request.query.stopNo == null || request.query.routeNo == null){
     response.status(400).send({"message":"Missing stop or route number"})
   }
