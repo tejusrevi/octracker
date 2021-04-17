@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransitService } from '../../services/transit.service';
 
 @Component({
   selector: 'app-transit-details',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transit-details.component.css']
 })
 export class TransitDetailsComponent implements OnInit {
-
-  constructor() { }
+  transitService;
+  constructor(transitService: TransitService) { 
+    this.transitService = transitService;
+  }
 
   ngOnInit(): void {
   }

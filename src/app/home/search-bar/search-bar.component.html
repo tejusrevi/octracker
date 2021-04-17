@@ -1,6 +1,20 @@
 <div>
-
-    <input type="text" [(ngModel)]="stopNo"/>
-    <button (click)="handleSubmit()">Submit</button>
-
+  <form class="example-form" id="search-form">
+    <mat-form-field class="example-full-width" id="search-input">
+      <mat-label>Number</mat-label>
+      <input type="text"
+             [(ngModel)]="stopNo"
+             placeholder="Eg. 4011 - WOODROFFE / IRIS"
+             aria-label="Stop Name / Number"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="handleSubmit()" >Submit</button>
+  </form>
 </div>
