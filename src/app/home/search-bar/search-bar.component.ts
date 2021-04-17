@@ -23,9 +23,7 @@ export class SearchBarComponent implements OnInit {
     this.transitService = transitService
   }
   async handleSubmit(){
-    console.log(this.stopNo)
     this.transitService.GetNextTripsForStopAllRoutes(stopList[this.stopNo].stopNo)
-    console.log(this.transitService.getData() !== undefined)
   }
 
   ngOnInit() {

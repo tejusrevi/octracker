@@ -1,0 +1,25 @@
+.transit-card-container{
+  display: grid;
+}
+@media (min-width: 400px){
+  .transit-card-container{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media (min-width: 600px){
+  .transit-card-container{
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+@media (min-width: 900px){
+  .transit-card-container{
+    grid-template-columns: repeat(4,1fr);
+  }
+}
+
+
+
+#transit-card{
+  min-height: 100px;
+  margin: 10px;
+}

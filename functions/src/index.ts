@@ -20,12 +20,12 @@ export const GetNextTripsForStopAllRoutes = functions.https.onRequest((request, 
     })
  });
 
- export const GetNextTripsForStop = functions.https.onRequest((request, response) => {
+ export const GetRouteSummaryForStop = functions.https.onRequest((request, response) => {
   response.set('Access-Control-Allow-Origin', '*');
-  if (request.query.stopNo == null || request.query.routeNo == null){
-    response.status(400).send({"message":"Missing stop or route number"})
+  if (request.query.stopNo == null ){
+    response.status(400).send({"message":"Missing stop"})
   }
-  https.get(`https://api.octranspo1.com/v2.0/GetNextTripsForStop?appID=${functions.config().octracker.appid}&apiKey=${functions.config().octracker.apikey}&stopNo=${request.query.stopNo}&routeNo=${request.query.routeNo}`, (res)=>{
+  https.get(`https://api.octranspo1.com/v2.0/GetRouteSummaryForStop?appID=${functions.config().octracker.appid}&apiKey=${functions.config().octracker.apikey}&stopNo=${request.query.stopNo}`, (res)=>{
     let rawData = '';  
     res.on('data', (chunk) => { rawData += chunk; });
     res.on('end', () => {

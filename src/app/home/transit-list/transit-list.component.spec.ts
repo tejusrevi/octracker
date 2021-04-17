@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TransitDetailsComponent } from './transit-details.component';
+import { TransitDetailsComponent } from './transit-list.component';
 
 describe('TransitDetailsComponent', () => {
   let component: TransitDetailsComponent;

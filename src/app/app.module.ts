@@ -13,14 +13,16 @@ import { AppComponent } from './app.component';
 
 import { TransitService } from './services/transit.service';
 import { SearchBarComponent } from './home/search-bar/search-bar.component';
-import { TransitDetailsComponent } from './home/transit-details/transit-details.component';
+import { TransitListComponent } from './home/transit-list/transit-list.component';
+import { TransitCardComponent } from './home/transit-list/transit-card/transit-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    TransitDetailsComponent
+    TransitListComponent,
+    TransitCardComponent
   ],
   imports: [
     BrowserModule,

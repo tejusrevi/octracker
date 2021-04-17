@@ -2,32 +2,46 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TransitService {
-  private data;
+  private currentRoutes;
+  private allRoutes;
   constructor() { }
 
  GetNextTripsForStopAllRoutes(stopNo: string){
     console.log(`Fetching GetNextTripsForStopAllRoutes for ${stopNo}`)
     fetch(`https://us-central1-oc-tracker.cloudfunctions.net/GetNextTripsForStopAllRoutes?stopNo=${stopNo}`)
     .then(async response => {
-      this.setData(await response.json())
+      this.setCurrentRoutes(await response.json())
     });
   }
 
-  setData(data){
-    console.log(data)
-    this.data = data;
+  isOnlyRoute(){
+    return Array.isArray(this.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route);
   }
 
-  getString(){
-    return JSON.stringify(this.data);
+  setCurrentRoutes(currentRoutes){
+    console.log(currentRoutes)
+    this.currentRoutes = currentRoutes;
   }
 
-  getData(){
-    return this.data;
+  getCurrentRoutes(){
+    return this.currentRoutes;
   }
 
-  clearData(){
-    this.data = undefined;
+  GetRouteSummaryForStop(stopNo: string){
+    console.log(`Fetching GetRouteSummaryForStop for ${stopNo}`)
+    fetch(`https://us-central1-oc-tracker.cloudfunctions.net/GetRouteSummaryForStop?stopNo=${stopNo}`)
+    .then(async response => {
+      this.setAllRoutes(await response.json())
+    });
+  }
+
+  setAllRoutes(allRoutes){
+    console.log(allRoutes)
+    this.allRoutes = allRoutes;
+  }
+
+  getAllRoutes(){
+    return this.allRoutes;
   }
 
 }
