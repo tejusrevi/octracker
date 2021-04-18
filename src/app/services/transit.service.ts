@@ -15,7 +15,7 @@ export class TransitService {
   }
 
   isOnlyRoute(){
-    return Array.isArray(this.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route);
+    return !Array.isArray(this.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route);
   }
 
   setCurrentRoutes(currentRoutes){

@@ -6,10 +6,22 @@ import { Route } from '../route'
   styleUrls: ['./transit-card.component.css']
 })
 export class TransitCardComponent implements OnInit {
-  @Input() route: Route;
-  constructor() { }
+  @Input()
+  get route(): Route { return this._route; }
+  set route(route: Route) {
+    this._route = route;
+  }
+  private _route = new Route()
+  constructor() { 
+
+  }
 
   ngOnInit(): void {
+  }
+
+  isOnlyTrip(){
+    console.log(this.route.Trips)
+    return !Array.isArray(this.route.Trips)
   }
 
 }

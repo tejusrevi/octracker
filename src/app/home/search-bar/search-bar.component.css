@@ -1,7 +1,7 @@
 #search-form{
   margin: auto;
   width: 80%;
-
+  padding: 10px;
 }
 #search-input{
   min-width: 80%;

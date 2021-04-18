@@ -1,18 +1,17 @@
-<div> 
+<div id="transit-list"> 
   <div *ngIf="transitService.getCurrentRoutes()">
     <div>
-      <div class="transit-card-container" *ngIf="transitService.isOnlyRoute() ; else elseBlock">
-        <mat-card id="transit-card" *ngFor="let route of transitService.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route">
+      <div class="transit-card-container"*ngIf="transitService.isOnlyRoute() ; else elseBlock">
+        <mat-card class="transit-card">
           <app-transit-card
-            [route]="route">
-
+            [route]="transitService.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route">
           </app-transit-card>
         </mat-card>
       </div>
       <ng-template class="transit-card-container" #elseBlock>
-        <mat-card>
+        <mat-card class="transit-card" *ngFor="let route of transitService.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route">
           <app-transit-card
-            [route]="transitService.getCurrentRoutes().GetRouteSummaryForStopResult.Routes.Route.RouteHeading">
+            [route]="route">
           </app-transit-card>
         </mat-card>
       </ng-template>

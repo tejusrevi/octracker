@@ -15,6 +15,7 @@ import  stopList from '../../../assets/stopList';
 export class SearchBarComponent implements OnInit {
   transitService;
   stopNo: string = '';
+  submitDisabled: boolean = true;
   myControl = new FormControl();
   options: string[] = Object.keys(stopList);
   filteredOptions: Observable<string[]>;
@@ -23,6 +24,7 @@ export class SearchBarComponent implements OnInit {
     this.transitService = transitService
   }
   async handleSubmit(){
+    //this.transitService.GetRouteSummaryForStop(stopList[this.stopNo].stopNo)
     this.transitService.GetNextTripsForStopAllRoutes(stopList[this.stopNo].stopNo)
   }
 
@@ -32,6 +34,8 @@ export class SearchBarComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value))
       );
+
+
   }
 
   private _filter(value: string): string[] {

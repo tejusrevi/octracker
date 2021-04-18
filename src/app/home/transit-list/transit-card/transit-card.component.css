@@ -1,0 +1,37 @@
+.transit-card{
+  display: flex;
+  flex-direction: row;
+}
+.mat-card {
+  border-radius: 12px;
+}
+.transit-card-route-no{
+  font-size: 48px;
+  font-weight: 600;
+  padding: 10px;
+  margin: 20px 0px;
+}
+
+.transit-card-route-heading{
+  opacity: 0.8;
+  position: absolute;
+  top: 20px;
+}
+
+.transit-card-route-trips{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  position: absolute;
+  bottom: 10px;
+}
+
+.transit-card-route-trip{
+  background-color: rgb(194 64 64);
+  color: white;
+  padding: 5px;
+  margin: 3px;
+  border-radius: 7px;
+  min-width: fit-content;
+  font-weight: 600;
+}

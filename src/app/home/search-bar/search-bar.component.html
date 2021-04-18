@@ -1,6 +1,6 @@
-<div>
-  <form class="example-form" id="search-form">
-    <mat-form-field class="example-full-width" id="search-input">
+<div id="search-bar">
+  <form id="search-form">
+    <mat-form-field  id="search-input">
       <mat-label>Number</mat-label>
       <input type="text"
              [(ngModel)]="stopNo"
@@ -15,6 +15,6 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <button mat-button color="primary" (click)="handleSubmit()" >Submit</button>
+    <button mat-button color="primary" (click)="handleSubmit()" [disabled]="false">Submit</button>
   </form>
 </div>
