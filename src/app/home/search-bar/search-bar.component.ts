@@ -10,6 +10,7 @@ import  MapStyle from '../../../assets/mapStyle';
 
 import { Loader } from "@googlemaps/js-api-loader";
 
+var API_KEY = ""
 
 @Component({
   selector: 'app-search-bar',
@@ -29,7 +30,7 @@ export class SearchBarComponent implements OnInit {
 
 
     const loader = new Loader({
-      apiKey: "AIzaSyAvqxGwCVtRfswWt1wFMtsfnbi7VsZFDHM",
+      apiKey: API_KEY,
       version: "weekly"
     });
     loader.load().then(() => {

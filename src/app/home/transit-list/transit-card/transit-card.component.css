@@ -28,6 +28,7 @@
 
 .transit-card-route-trip{
   background-color: rgb(194 64 64);
+  white-space: nowrap;
   color: white;
   padding: 5px;
   margin: 3px;

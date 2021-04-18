@@ -16,13 +16,15 @@
               {{ route.Trips.Trip.AdjustedScheduleTime }} 5
             </div>
           </div>
-          <ng-template class="transit-card-route-trips" #elseBlock3 *ngFor="let trip of route.Trips.Trip">
-            <div class="transit-card-route-trip">
-              {{ trip.AdjustedScheduleTime }} 1
-            </div>
+          <ng-template #elseBlock3>
+              <div class="transit-card-route-trips" *ngFor="let trip of route.Trips.Trip">
+              <div class="transit-card-route-trip">
+                {{ trip.AdjustedScheduleTime }} 1
+              </div>
+          </div>
           </ng-template>
         </div>
-        <ng-template class="transit-card-route-trips" #elseBlock2>
+        <ng-template #elseBlock2 class="transit-card-route-trips">
           <div class="transit-card-route-trip">
             {{ route.Trips.AdjustedScheduleTime }} 2
           </div>
