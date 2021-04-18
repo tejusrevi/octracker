@@ -9,23 +9,41 @@
       {{ route.RouteHeading }}
     </div>
     <div class="transit-card-route-trips">
-      <div *ngIf="isOnlyTrip() ; else elseBlock">
+      <div *ngIf="isOnlyTrip() ; else elseBlock1">
         <div *ngIf="route.Trips.Trip ; else elseBlock2">
-          <div class="transit-card-route-trip" *ngFor="let trip of route.Trips.Trip">
-            {{ trip.AdjustedScheduleTime }} 1
+          <div class="transit-card-route-trips" *ngIf="route.Trips.Trip.AdjustedScheduleTime ; else elseBlock3">
+            <div class="transit-card-route-trip">
+              {{ route.Trips.Trip.AdjustedScheduleTime }} 5
+            </div>
           </div>
+          <ng-template class="transit-card-route-trips" #elseBlock3 *ngFor="let trip of route.Trips.Trip">
+            <div class="transit-card-route-trip">
+              {{ trip.AdjustedScheduleTime }} 1
+            </div>
+          </ng-template>
         </div>
-        <ng-template #elseBlock2>
+        <ng-template class="transit-card-route-trips" #elseBlock2>
           <div class="transit-card-route-trip">
             {{ route.Trips.AdjustedScheduleTime }} 2
           </div>
         </ng-template>
         
       </div>
-      <ng-template #elseBlock>
-        <div class="transit-card-route-trip" *ngFor="let trip of route.Trips">
-          {{ trip.AdjustedScheduleTime }} 3
+      <ng-template #elseBlock1>
+        
+        <div *ngIf="route.Trips ; else elseBlock4">
+          <div  *ngFor="let trip of route.Trips">
+            <div class="transit-card-route-trip">
+              {{ trip.AdjustedScheduleTime }} 7
+            </div>
+          </div>
         </div>
+        <ng-template class="transit-card-route-trips" #elseBlock4>
+          <div class="transit-card-route-trip">
+            {{ route.Trips.AdjustedScheduleTime }} 8
+          </div>
+        </ng-template>
+
       </ng-template>
     </div>
   </div>

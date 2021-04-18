@@ -18,7 +18,7 @@
   top: 20px;
 }
 
-.transit-card-route-trips{
+.transit-card-route-trips > div{
   display: flex;
   flex-direction: row;
   padding: 10px;

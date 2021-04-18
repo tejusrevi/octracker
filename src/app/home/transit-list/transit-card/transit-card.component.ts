@@ -20,7 +20,6 @@ export class TransitCardComponent implements OnInit {
   }
 
   isOnlyTrip(){
-    console.log(this.route.Trips)
     return !Array.isArray(this.route.Trips)
   }
 

@@ -19,7 +19,6 @@ export class TransitService {
   }
 
   setCurrentRoutes(currentRoutes){
-    console.log(currentRoutes)
     this.currentRoutes = currentRoutes;
   }
 
@@ -36,7 +35,6 @@ export class TransitService {
   }
 
   setAllRoutes(allRoutes){
-    console.log(allRoutes)
     this.allRoutes = allRoutes;
   }
 

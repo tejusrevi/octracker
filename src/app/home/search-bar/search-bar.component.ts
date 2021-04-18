@@ -6,6 +6,10 @@ import {map, startWith} from 'rxjs/operators';
 import { TransitService } from '../../services/transit.service';
 
 import  stopList from '../../../assets/stopList';
+import  MapStyle from '../../../assets/mapStyle';
+
+import { Loader } from "@googlemaps/js-api-loader";
+
 
 @Component({
   selector: 'app-search-bar',
@@ -22,10 +26,41 @@ export class SearchBarComponent implements OnInit {
 
   constructor(transitService : TransitService){
     this.transitService = transitService
+
+
+    const loader = new Loader({
+      apiKey: "AIzaSyAvqxGwCVtRfswWt1wFMtsfnbi7VsZFDHM",
+      version: "weekly"
+    });
+    loader.load().then(() => {
+      let map = new window.google.maps.Map(document.getElementById("map"), {
+        center: { lat: 45.4231351, lng: -75.6992651},
+        zoom: 16,
+        minZoom: 15,
+        styles: MapStyle,
+        mapTypeControl: false,
+        streetViewControl: false
+      });
+
+      for (const [key, value] of Object.entries(stopList)) {
+        let marker = new google.maps.Marker({
+          position:  { lat: value.lat, lng: value.lng },
+          map,
+          title: key,
+        });
+        google.maps.event.addListener(marker, 'click', ()=>this.handleMarkerClick(value.stopNo));
+      }
+    });
+
   }
   async handleSubmit(){
     //this.transitService.GetRouteSummaryForStop(stopList[this.stopNo].stopNo)
     this.transitService.GetNextTripsForStopAllRoutes(stopList[this.stopNo].stopNo)
+  }
+
+  async handleMarkerClick(stopNo){
+    //this.transitService.GetRouteSummaryForStop(stopList[this.stopNo].stopNo)
+    this.transitService.GetNextTripsForStopAllRoutes(stopNo)
   }
 
   ngOnInit() {

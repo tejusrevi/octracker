@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Loader } from "@googlemaps/js-api-loader";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +8,6 @@ import { Loader } from "@googlemaps/js-api-loader";
 export class AppComponent {
   title = 'octranspo-tracker-v2';
   constructor(){
+    
   }
 }
